@@ -33,3 +33,27 @@ java中如果两个hashMap的key和value都逐一相等，则map1.equals(map2) �
     }
 
 ```
+
+求int[]中的最大值
+```java
+import java.util.Arrays;
+import java.util.Collections;
+
+public static int MAX(int[] arr) {
+    Arrays.sort(arr);
+    return arr[arr.length-1];
+}
+
+public static void main(String[] args) {
+    Integer[] numbers = { 8, 2, 7, 1, 4, 9, 5};
+    int min = (int) Collections.min(Arrays.asList(numbers));
+    int max = (int) Collections.max(Arrays.asList(numbers));
+    System.out.println("最小值: " + min);
+    System.out.println("最大值: " + max);
+}
+
+public static int MAX(int[] arr) {
+    return Arrays.Stream(arr).max().getAsInt();
+}
+
+```
