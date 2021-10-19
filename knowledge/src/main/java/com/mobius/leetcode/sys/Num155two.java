@@ -2,6 +2,9 @@ package com.mobius.leetcode.sys;
 
 import java.util.LinkedList;
 
+/**
+ * 双端队列，最小值放前面，当前值放后面。
+ */
 public class Num155two {
     int min = Integer.MAX_VALUE;
     LinkedList<Integer> list;
