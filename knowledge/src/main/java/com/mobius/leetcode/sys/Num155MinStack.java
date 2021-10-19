@@ -10,7 +10,7 @@ public class Num155MinStack {
         @Override
         public int compare(Integer o1, Integer o2) {
             //升序
-            return o1-o2;
+            return o1.intValue()-o2.intValue();
             //降序
             //return o2-o1;
         }
