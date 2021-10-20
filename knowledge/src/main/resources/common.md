@@ -1,5 +1,7 @@
 ##刷题笔记
 
+![img_2.png](img_2.png)
+
 java中如果两个hashMap的key和value都逐一相等，则map1.equals(map2) 为true
 ```java
      public boolean equals(Object o) {
