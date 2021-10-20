@@ -1,9 +1,11 @@
 package com.mobius.common;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class User implements Comparable<User>{
 
@@ -49,6 +51,7 @@ public class Sort {
         list.add(new Integer(13));
         list.add(new Integer(4));
         list.add(new Integer(9));
+        // Integer 自身已经实现了Comparable接口并重写了compareTo方法
         Collections.sort(list);
         System.out.println(list.toString());
     }
@@ -77,8 +80,32 @@ public class Sort {
             System.out.println(list.toString());
     }
 
+
+
+    public void testSortStudentInfo() {
+        List<StudentInfo> studentList = new ArrayList<>();
+        studentList.add(new StudentInfo("李小明",true,18,1.76, LocalDate.of(2001,3,23)));
+        studentList.add(new StudentInfo("张小丽",false,18,1.61,LocalDate.of(2001,6,3)));
+        studentList.add(new StudentInfo("王大朋",true,19,1.82,LocalDate.of(2000,3,11)));
+        studentList.add(new StudentInfo("陈小跑",false,17,1.67,LocalDate.of(2002,10,18)));
+        //排序前输出
+        StudentInfo.printStudents(studentList);
+        //按年龄排序(Integer类型)
+        List<StudentInfo> studentsSortName = studentList.stream().sorted(Comparator.comparing(StudentInfo::getAge)).collect(Collectors.toList());
+        //排序后输出
+        List<StudentInfo> studentsSortNameReversed = studentList.stream().sorted(Comparator.comparing(StudentInfo::getAge).reversed()).collect(Collectors.toList());
+        StudentInfo.printStudents(studentsSortName);
+
+        List<StudentInfo> studentsSortAgeAndHeight = studentList.stream()
+                .sorted(Comparator.comparing(StudentInfo::getAge).reversed().thenComparing(StudentInfo::getHeight))
+                .collect(Collectors.toList());
+    }
+
     public static void main(String[] args) {
         Sort sort = new Sort();
         sort.userSort();
+        sort.testSortStudentInfo();
     }
+
+
 }
